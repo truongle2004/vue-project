@@ -23,27 +23,42 @@ const validateForm = () => {
     <h1>Register</h1>
     <form @submit.prevent="validateForm">
       <div class="username">
-        <p>User name</p>
-        <input v-model="form.username" type="text" required />
+        <label class="form-label">User name</label>
+        <input
+          v-model="form.username"
+          type="text"
+          class="form-control username"
+          id="username"
+          required
+        />
       </div>
       <div class="email">
-        <p>Email</p>
-        <input v-model="form.email" type="email" required />
+        <label class="form-label">Email</label>
+        <input v-model="form.email" type="email" class="form-control email" id="email" required />
       </div>
       <div class="password">
-        <p>Password</p>
-        <input v-model="form.password" type="password" required />
+        <label class="form-label">Password</label>
+        <input
+          v-model="form.password"
+          type="password"
+          class="form-control password"
+          id="password"
+          required
+        />
       </div>
       <div class="confirm-password">
-        <p>Confirm Password</p>
-        <input v-model="form.confirmPassword" type="password" required />
+        <label class="form-label">Confirm Password</label>
+        <input
+          v-model="form.confirmPassword"
+          type="password"
+          class="form-control confirmPassword"
+          id="password"
+          required
+        />
       </div>
-
-      <button class="btn-login" type="submit">Login</button>
+      <button class="btn btn-primary" type="submit" style="width: 100%">Login</button>
     </form>
     <p>You already have an account?</p>
     <a class="login" href="/login">Login</a>
   </div>
 </template>
-
-<style src="../index.css" />

@@ -1,4 +1,7 @@
+<!-- eslint-disable no-unused-vars -->
 <script setup>
+import { loginApi } from '@/apis/login'
+import { useMutation } from '@tanstack/vue-query'
 import { reactive } from 'vue'
 
 const form = reactive({
@@ -6,12 +9,27 @@ const form = reactive({
   password: ''
 })
 
+const { isPending, isError, error, isSuccess, mutate } = useMutation({
+  mutationFn: loginApi
+})
+
+const handleLogin = () => {
+  console.log('is called')
+  if (validateForm()) {
+    mutate(form, {
+      onSuccess: (data) => {
+        console.log(data)
+        window.location.href = '/register'
+      }
+    })
+  }
+}
+
 const validateForm = () => {
   if (!form.email || !form.password) {
     alert('Both fields are required!')
     return false
   }
-  alert('Form submitted successfully!')
   return true
 }
 </script>
@@ -19,20 +37,40 @@ const validateForm = () => {
 <template>
   <div class="container">
     <h1>Login</h1>
-    <form @submit.prevent="validateForm">
-      <div class="email">
-        <p>Email</p>
-        <input v-model="form.email" type="email" required />
+    <form @submit.prevent="handleLogin">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input v-model="form.email" type="email" class="form-control" id="email" required />
       </div>
-      <div class="password">
-        <p>Password</p>
-        <input v-model="form.password" type="password" required />
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          v-model="form.password"
+          type="password"
+          class="form-control"
+          id="password"
+          required
+        />
       </div>
-      <button class="btn-login" type="submit">Login</button>
+      <button class="btn btn-primary" type="submit">Login</button>
     </form>
-    <p>You don't have an account?</p>
-    <a class="register" href="/register">Register</a>
+    <p>Don't have an account? <a href="/register">Register</a></p>
   </div>
 </template>
 
-<style src="../index.css"></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-control {
+  width: 300px;
+}
+
+.mb-3 {
+  margin-bottom: 15px;
+}
+</style>

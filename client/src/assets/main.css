@@ -1,12 +1,17 @@
 #app {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
   font-family: 'Roboto', sans-serif;
 }
 
-button {
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* button {
   padding: 10px 12px;
   border: none;
   border-radius: 12px;
@@ -46,4 +51,4 @@ input {
 
 p {
   margin: 0px;
-}
+} */
