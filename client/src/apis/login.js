@@ -1,5 +1,6 @@
+import { LOGIN_URL } from '@/constant'
 import axiosInstance from '@/utils/axiosInstance'
 
 export const loginApi = ({ email, password }) => {
-  return axiosInstance.post('http://localhost:3000/user/login', { email, password })
+  return axiosInstance.post(LOGIN_URL, { email, password })
 }

@@ -1,5 +1,11 @@
 <script setup>
-// No additional logic yet
+import router from '@/router'
+
+const handleRoute = () => {
+  router.push({
+    path: '/home'
+  })
+}
 </script>
 
 <template>
@@ -84,6 +90,7 @@
           type="button"
           class="btn btn-outline-secondary rounded"
           style="width: 137px; height: 56px"
+          @click="handleRoute"
         >
           Shop now
         </button>
@@ -101,7 +108,12 @@
           </h1>
           <p>Frills forever</p>
         </div>
-        <button type="button" class="btn btn-outline-secondary" style="width: 137px; height: 56px">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          style="width: 137px; height: 56px"
+          @click="handleRoute"
+        >
           Shop now
         </button>
       </div>

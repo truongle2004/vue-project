@@ -1,8 +1,10 @@
 <!-- eslint-disable no-unused-vars -->
 <script setup>
 import { loginApi } from '@/apis/login'
+import router from '@/router'
 import { useMutation } from '@tanstack/vue-query'
 import { reactive } from 'vue'
+import { useAuth } from '@/hooks/useAuth'
 
 const form = reactive({
   email: '',
@@ -13,13 +15,19 @@ const { isPending, isError, error, isSuccess, mutate } = useMutation({
   mutationFn: loginApi
 })
 
+const { setToken, setUserInfo } = useAuth()
+
 const handleLogin = () => {
   console.log('is called')
   if (validateForm()) {
     mutate(form, {
       onSuccess: (data) => {
-        console.log(data)
-        window.location.href = '/register'
+        const { accessToken, user } = data
+        setToken(accessToken)
+        setUserInfo(user)
+        router.push({
+          path: '/'
+        })
       }
     })
   }
