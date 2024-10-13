@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import CardProduct from '@/components/CardProduct.vue'
+</script>
 <template>
   <div class="text-center">
     <h1>Topshop</h1>
@@ -86,7 +88,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Discount
+          Sort
         </button>
         <ul class="dropdown-menu">
           <li><button class="dropdown-item" type="button">Price high to low</button></li>
@@ -94,6 +96,15 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div class="list-products">
+    <CardProduct />
+    <CardProduct />
+    <CardProduct />
+    <CardProduct />
+    <CardProduct />
+    <CardProduct />
+    <CardProduct />
   </div>
 </template>
 <style scoped>
@@ -109,5 +120,10 @@
 }
 .dropdown-toggle {
   width: 200px;
+}
+
+.list-products {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
