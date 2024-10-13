@@ -9,24 +9,6 @@ const handleRoute = () => {
 </script>
 
 <template>
-  <nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand">ASOS</a>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-      </form>
-      <div class="ms-3">
-        <img
-          src="https://i.pinimg.com/564x/26/d7/a7/26d7a73e700970b106225df8288ef0b7.jpg"
-          alt="User Avatar"
-          class="rounded-circle"
-          width="40"
-          height="40"
-        />
-      </div>
-    </div>
-  </nav>
-
   <div class="container-fluid p-0">
     <div class="hero-img mb-4">
       <img
